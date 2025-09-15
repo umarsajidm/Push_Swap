@@ -8,7 +8,9 @@ Src = ft_calloc.c \
       push_swap.c \
       ft_substr.c \
 	  ft_strlen.c \
-	  ft_strdup.c
+	  ft_strdup.c \
+	  ft_atoi.c		\
+	  ft_isdigit.c
 Obj = $(Src:.c=.o)
 
 all: $(Name)

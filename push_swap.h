@@ -32,6 +32,8 @@ char	*ft_strdup(const char *s);
 char			**ft_split(const char *str, char del);
 void	*ft_calloc(size_t nmemb, size_t size);
 char **arrayOfNumbers(int ac, char **argv);
+int	ft_atoi(const char *str);
+int	ft_isdigit(int a);
 
 #endif
 

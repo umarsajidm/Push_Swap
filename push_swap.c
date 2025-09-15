@@ -16,6 +16,7 @@
 static void addToTheStack(t_node **head, int value);
 static t_node *createNewNode(int value);
 char **arrayOfNumbers(int ac, char **argv);
+static void	freearray(char **arr);
 
 int main(int ac, char **av)
 {
@@ -32,18 +33,8 @@ int main(int ac, char **av)
         addToTheStack(&stack_a, number);// here to validate if there is double value
         i++;
     }
-      // Debug: print list
-    t_node *tmp = stack_a;
-    while (tmp)
-    {
-        printf("%d\n", tmp->value);
-        tmp = tmp->next;
-    }
-    
-    // if (ac == 2)
-    //     free_split(num); // free the ft_split result
-
-
+    if (ac == 2)
+        freearray(num); // free the ft_split result
     return (0);
 }
 static t_node *createNewNode(int value)
@@ -86,4 +77,17 @@ char **arrayOfNumbers(int ac, char **argv)
         split = argv + 1; // skip program name
 
     return split;
+}
+
+static void	freearray(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
