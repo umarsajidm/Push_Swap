@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 typedef struct s_node
 {
@@ -24,7 +25,25 @@ typedef struct s_node
     struct s_node *next;
 }              t_node;
 
+//operations
 
+//swap
+void swap_a(t_node **stack_a, bool check);
+void swap_b(t_node **stack_b, bool check);
+void swap_ab(t_node **stack_a, t_node **stack_b);
+//push
+void push_a(t_node **stack_a, t_node **stack_b);
+void push_b(t_node **stack_a, t_node **stack_b);
+//rotate
+void rotate_a(t_node **stack_a, bool check);
+void rotate_b(t_node **stack_b, bool check);
+void rotate_ab(t_node **stack_a, t_node **stack_b);
+//reverse_rotate
+void rrotate_a(t_node **stack_a, bool check);
+void rrotate_b(t_node **stack_b, bool check);
+void rrotate_ab(t_node **stack_a, t_node **stack_b);
+//small sort
+void sort_three(t_node **stack_a);
 
 size_t	ft_strlen(const char *c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -34,6 +53,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char **arrayOfNumbers(int ac, char **argv);
 int	ft_atoi(const char *str);
 int	ft_isdigit(int a);
+int size(t_node *stack_a);
 
 #endif
 

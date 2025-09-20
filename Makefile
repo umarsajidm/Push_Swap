@@ -10,7 +10,9 @@ Src = ft_calloc.c \
 	  ft_strlen.c \
 	  ft_strdup.c \
 	  ft_atoi.c		\
-	  ft_isdigit.c
+	  ft_isdigit.c	\
+	  operations.c	\
+	  small_sort.c
 Obj = $(Src:.c=.o)
 
 all: $(Name)
