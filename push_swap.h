@@ -49,6 +49,15 @@ void sort_five(t_node **stack_a, t_node **stack_b);
 void radix_sort(t_node **stack_a, t_node **stack_b);
 void indexing_stack(t_node *stack);
 
+//utils
+void	freearray(char **arr);
+char	**arrayOfNumbers(int ac, char **argv);
+int	sorted(t_node **stack_a);
+int	size(t_node *stack);
+//parsing
+int	fill_stack(t_node **stack, char **num);
+
+
 size_t	ft_strlen(const char *c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
