@@ -47,7 +47,7 @@ static void bring_min_top(t_node **stack_a, int value)
     int i;
     int j;
 
-    if (!stack_a)
+    if (!stack_a || !*stack_a)
         return ;
     temp = *stack_a;
     i = 0;
@@ -56,25 +56,27 @@ static void bring_min_top(t_node **stack_a, int value)
         temp = temp->next;
         i++;
     }
-    j = size(stack_a);
+    j = size(*stack_a);
     if (i < j/2)
         while ((*stack_a)->value != value)
             rotate_a(stack_a, 1);
-    while((*stack_a)->value != value)
-        rrotate_a(stack_a, 1);
+    else
+        while((*stack_a)->value != value)
+            rrotate_a(stack_a, 1);
 }
 
 void sort_five(t_node **stack_a, t_node **stack_b)
 {
-    int first;
-    int second;
+    int minimum;
+    int count;
 
-    first = find_the_minimum(stack_a);
-    bring_min_top(stack_a, first);
-    push_b(stack_a, stack_b);
-    second = find_the_minimum(stack_a);
-    bring_min_top(stack_a, second);
-    push_b(stack_a, stack_b);
+    count = size(*stack_a) - 3;
+    while(count--)
+    {
+        minimum = find_the_minimum(*stack_a);
+        bring_min_top(stack_a, minimum);
+        push_b(stack_a, stack_b);
+    }
     sort_three(stack_a);
     push_a(stack_a, stack_b);
     push_a(stack_a, stack_b);    

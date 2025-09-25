@@ -24,6 +24,7 @@ int main(int ac, char **av)
 {
    int i;
    t_node *stack_a = NULL;
+   t_node *stack_b = NULL;
 
    i = 0;
     if (ac < 2)
@@ -41,6 +42,13 @@ int main(int ac, char **av)
         swap_a(&stack_a, 1);
     else if (size(stack_a) == 3)
         sort_three(&stack_a);
+    else if (size(stack_a) <= 5)
+        sort_five(&stack_a, &stack_b);
+    else
+        {
+            indexing_stack(stack_a);
+            radix_sort(&stack_a, &stack_b);
+        }
     if (ac == 2)
         freearray(num); // free the ft_split result
     return (0);

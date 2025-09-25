@@ -12,7 +12,8 @@ Src = ft_calloc.c \
 	  ft_atoi.c		\
 	  ft_isdigit.c	\
 	  operations.c	\
-	  small_sort.c
+	  small_sort.c	\
+	  radix_sort.c
 Obj = $(Src:.c=.o)
 
 all: $(Name)

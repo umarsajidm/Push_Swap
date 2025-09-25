@@ -44,6 +44,10 @@ void rrotate_b(t_node **stack_b, bool check);
 void rrotate_ab(t_node **stack_a, t_node **stack_b);
 //small sort
 void sort_three(t_node **stack_a);
+void sort_five(t_node **stack_a, t_node **stack_b);
+//radix_sort
+void radix_sort(t_node **stack_a, t_node **stack_b);
+void indexing_stack(t_node *stack);
 
 size_t	ft_strlen(const char *c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
