@@ -1,37 +1,42 @@
 Name = push_swap
-
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
 
-Src = ft_calloc.c \
-      ft_split.c \
-      push_swap.c \
-      ft_substr.c \
-	  ft_strlen.c \
-	  ft_strdup.c \
-	  ft_atoi.c		\
-	  ft_isdigit.c	\
-	  operations.c	\
-	  small_sort.c	\
-	  radix_sort.c	\
-	  utils.c	\
-	  parsing.c \
-	  
+Src = src/push_swap.c \
+	  src/push.c \
+	  src/swap.c \
+	  src/rotate.c \
+	  src/reverse_rotate.c \
+	  src/small_sort.c \
+	  src/radix_indexing.c \
+	  src/radix_sort.c \
+	  src/checkers.c \
+	  src/utils.c \
+	  src/parsing.c \
+
+Libftdir = libft
+Libftname = $(Libftdir)/libft.a
+
 Obj = $(Src:.c=.o)
 
 all: $(Name)
 
-$(Name): $(Obj)
-	$(CC) $(CFLAGS) $(Obj) -o $(Name)
+$(Libftname):
+	make -C $(Libftdir)
+
+$(Name): $(Obj) $(Libftname)
+	$(CC) $(CFLAGS) $(Obj) $(Libftname) -o $(Name)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	make clean -C $(Libftdir)
 	rm -f $(Obj)
 
 fclean: clean
-	rm -f $(Name)
+	make fclean -C $(Libftdir)
+	rm -f $(Name) $(Obj)
 
 re: fclean all
 
