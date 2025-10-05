@@ -52,6 +52,8 @@ int	fill_stack(t_node **stack, char **num)
 	int	val;
 
 	i = 0;
+	if (!num)
+		return (0);
 	while (num[i])
 	{
 		if (!ft_atoi_safe(num[i], &val))

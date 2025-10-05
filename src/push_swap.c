@@ -30,6 +30,23 @@ static void	sort_dispatcher(t_node **a, t_node **b)
 	}
 }
 
+static void	free_stack(t_node **stack)
+{
+	t_node	*temp;
+	t_node	*next;
+
+	if (!stack)
+		return ;
+	temp = *stack;
+	while (temp)
+	{
+		next = temp->next;
+		free(temp);
+		temp = next;
+	}
+	*stack = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	t_node	*stack_a;
@@ -41,14 +58,18 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	num = arrayofnumbers(ac, av);
-	if (!fill_stack(&stack_a, num))
+	if (!num || !fill_stack(&stack_a, num))
 	{
+		if (num)
+			freearray(num);
+		free_stack(&stack_a);
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	if (!sorted(&stack_a))
 		sort_dispatcher(&stack_a, &stack_b);
-	if (ac == 2)
-		freearray(num);
+	freearray(num);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

@@ -41,14 +41,46 @@ int	sorted(t_node **stack_a)
 	return (1);
 }
 
+static char	*join_args(int ac, char **argv)
+{
+	char	*joined;
+	char	*tmp;
+	int		i;
+
+	if (ac < 2)
+		return (NULL);
+	joined = ft_strdup(argv[1]);
+	if (!joined)
+		return (NULL);
+	i = 2;
+	while (i < ac)
+	{
+		tmp = ft_strjoin(joined, " ");
+		free(joined);
+		if (!tmp)
+			return (NULL);
+		joined = ft_strjoin(tmp, argv[i++]);
+		free(tmp);
+		if (!joined)
+			return (NULL);
+	}
+	return (joined);
+}
+
 char	**arrayofnumbers(int ac, char **argv)
 {
+	char	*joined;
 	char	**split;
 
+	if (!argv[1] || argv[1][0] == '\0')
+		return (NULL);
 	if (ac == 2)
-		split = ft_split(argv[1], ' ');
-	else
-		split = argv + 1;
+		return (ft_split(argv[1], ' '));
+	joined = join_args(ac, argv);
+	if (!joined)
+		return (NULL);
+	split = ft_split(joined, ' ');
+	free(joined);
 	return (split);
 }
 
